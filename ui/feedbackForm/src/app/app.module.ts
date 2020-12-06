@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormPageComponent } from './form-page/form-page.component';
 import { SideHeaderComponent } from './side-header/side-header.component';
+import { FeedbackReportComponent } from './feedback-report/feedback-report.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormPageComponent,
-    SideHeaderComponent
+    SideHeaderComponent,
+    FeedbackReportComponent
   ],
   imports: [
     BrowserModule,
