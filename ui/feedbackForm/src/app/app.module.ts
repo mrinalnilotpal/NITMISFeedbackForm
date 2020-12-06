@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FormPageComponent } from './form-page/form-page.component';
 import { SideHeaderComponent } from './side-header/side-header.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormPageComponent,
     SideHeaderComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ConfirmationPageComponent
   ],
   imports: [
     BrowserModule,
