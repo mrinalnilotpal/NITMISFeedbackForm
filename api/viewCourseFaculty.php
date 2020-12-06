@@ -15,20 +15,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
 
         if ($result->num_rows > 0) 
-        {   $courses = array();
-            // output data of each row
+        {   
             while($row = $result->fetch_assoc()) 
             {        $course_id = $row["COURSE_ID"];
                      $course_name = $row["COURSE_NAME"];
                      $fac_name = $row["FAC_NAME"];
             	     $course_array[]=array("course_id"=> $course_id, "course_name"=>$course_name, "fac_name"=>$fac_name);
-            	     array_push($courses, $course_array);
 
             }
             echo json_response(200, json_encode($course_array));
-         //  echo json_encode($course_array);
-           // echo json_encode($courses);
-            
         } 
         else 
         {    echo json_response(404, "0 results");
