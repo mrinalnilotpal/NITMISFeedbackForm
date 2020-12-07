@@ -11,6 +11,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DenialPageComponent } from './denial-page/denial-page.component';
 import { FacultyLoginComponent } from './faculty-login/faculty-login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

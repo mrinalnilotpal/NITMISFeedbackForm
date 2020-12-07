@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-login-page',
@@ -14,9 +15,10 @@ export class LoginPageComponent implements OnInit {
   isValid = true;
   isStudent = true;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.fetchTouched();
   }
 
   onSubmit(form: NgForm){
@@ -27,5 +29,12 @@ export class LoginPageComponent implements OnInit {
     let validationField = (<HTMLInputElement>event.target).value;
     this.isValid = this.rollRegEx.test(validationField);
     console.log(this.isValid);
+  }
+
+  private fetchTouched(){
+    this.http.post('http://localhost:4200/api/checkFeedbackStatus.php',
+      {"rollno":"cs18b1068"}).subscribe(data => {
+      console.log();
+    });
   }
 }
