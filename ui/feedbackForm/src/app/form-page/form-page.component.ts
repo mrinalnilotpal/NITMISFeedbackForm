@@ -21,7 +21,7 @@ export class FormPageComponent implements OnInit {
         course_name: "OPERATING SYSTEMS",
         fac_id: "103",
         fac_name: "Dr. Ahilandeswari Thangarajan",
-        type: "lab"
+        type: "theory"
     }
   ];
 
