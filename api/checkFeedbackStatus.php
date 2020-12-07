@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) { 
-            echo json_response(200, TRUE);
+            echo json_response(200, "True");
         }
         else {
-            echo json_response(200, FALSE);
+            echo json_response(200, "False");
         }
     }
     else {
