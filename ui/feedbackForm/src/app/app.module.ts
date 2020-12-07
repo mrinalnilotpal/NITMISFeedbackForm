@@ -14,6 +14,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from './form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormFieldComponent } from './form-field/form-field.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DenialPageComponent,
     FacultyLoginComponent,
     AdminLoginComponent,
-    FormComponent
+    FormComponent,
+    FormFieldComponent
   ],
   imports: [
     BrowserModule,

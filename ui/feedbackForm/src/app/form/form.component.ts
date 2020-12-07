@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent implements OnInit {
+  rating = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
