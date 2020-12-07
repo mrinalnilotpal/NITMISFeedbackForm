@@ -1,4 +1,14 @@
 <div class="container">
-    <app-form-field question="asdfasdf" slNo = "1" (currentRateChange)="rating=$event"></app-form-field>
-    <h1>{{this.rating}}</h1>
+    <div *ngIf="this.subjectType==='theory'">
+        <div  *ngFor = "let qn of theoryQn; let indexOfElement = index;">
+            <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" (currentRateChange)="rating[indexOfElement]=$event"></app-form-field>
+        </div>
+    </div>
+    
+    <div *ngIf="this.subjectType==='lab'">
+        <div  *ngFor = "let qn of labQn; let indexOfElement = index;">
+            <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" (currentRateChange)="rating[indexOfElement]=$event"></app-form-field>
+        </div>
+    </div>
+    
 </div>
