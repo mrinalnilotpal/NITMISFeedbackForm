@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
          $conn = dbConnect();
          if ($data && property_exists($data, "roll_no") && property_exists($data, "feedback"))
          {
+            $data->roll_no = strtoupper($data->roll_no);
             $feedback = $data->feedback;
             if( count($feedback) > 0)
             {
