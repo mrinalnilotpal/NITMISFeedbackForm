@@ -1,15 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.sass']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnChanges {
   @Input() rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   @Input() subjectType = "theory";
+  @Input() refresh = true;
 
-  @Output() emitRating = new EventEmitter<number[]>();
+  @Output() refreshChange = new EventEmitter<boolean>();
+  @Output() ratingChange = new EventEmitter<number[]>();
 
   readonly theoryQn = [
     'Lectures are well prepared',
@@ -38,5 +40,9 @@ export class FormComponent implements OnInit {
     if (this.subjectType === "lab") {
       this.rating = [0, 0, 0, 0, 0];
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.rating);
   }
 }
