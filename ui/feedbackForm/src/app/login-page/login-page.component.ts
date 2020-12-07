@@ -32,9 +32,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   private fetchTouched(){
-    this.http.post('http://localhost:4200/api/checkFeedbackStatus.php',
-      {"rollno":"cs18b1068"}).subscribe(data => {
-      console.log();
+    this.http.post('http://localhost:4200/api/checkFeedbackStatus',
+      {"roll_no":"cs18b1068"}).subscribe(data => {
+      console.log(data);
     });
   }
 }
