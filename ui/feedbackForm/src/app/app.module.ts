@@ -13,6 +13,7 @@ import { FacultyLoginComponent } from './faculty-login/faculty-login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from './form/form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FormComponent } from './form/form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
