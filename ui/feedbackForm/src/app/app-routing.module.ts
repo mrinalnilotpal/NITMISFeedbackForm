@@ -7,7 +7,7 @@ import {AdminLoginComponent} from "./admin-login/admin-login.component";
 import {DenialPageComponent} from "./denial-page/denial-page.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/form', pathMatch: 'full' },
   { path: 'login', component: LoginPageComponent },
   { path: 'form', component: FormPageComponent },
   { path: 'faculty-login', component: FacultyLoginComponent },
