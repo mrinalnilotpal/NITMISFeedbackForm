@@ -21,7 +21,7 @@ export class FormPageComponent implements OnInit {
         course_name: "OPERATING SYSTEMS",
         fac_id: "103",
         fac_name: "Dr. Ahilandeswari Thangarajan",
-        type: "theory"
+        type: "lab"
     }
   ];
 
@@ -34,7 +34,6 @@ export class FormPageComponent implements OnInit {
   rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   currentIndex = 0;
   totalCourses = 0;
-  refresh = false;
 
   constructor() { }
 
@@ -68,7 +67,6 @@ export class FormPageComponent implements OnInit {
     this.subjectCode = this.courseData[index].course_id;
     this.type = this.courseData[index].type;
     this.rating = this.getDefaultRating(this.type);
-    this.refresh = true;
     console.log(this.rating);
   }
 

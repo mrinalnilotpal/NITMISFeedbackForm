@@ -8,9 +8,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 export class FormComponent implements OnInit, OnChanges {
   @Input() rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   @Input() subjectType = "theory";
-  @Input() refresh = true;
 
-  @Output() refreshChange = new EventEmitter<boolean>();
   @Output() ratingChange = new EventEmitter<number[]>();
 
   readonly theoryQn = [
