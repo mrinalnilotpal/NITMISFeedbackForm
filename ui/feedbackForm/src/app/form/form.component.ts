@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.sass']
 })
-export class FormComponent implements OnInit, OnChanges {
+export class FormComponent implements OnInit, AfterContentChecked {
   @Input() rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   @Input() subjectType = "theory";
 
@@ -32,7 +32,7 @@ export class FormComponent implements OnInit, OnChanges {
     'Transparency and fairness of Evaluation system for Laboratory Examinations'
   ];
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     if (this.subjectType === "lab") {
@@ -40,7 +40,7 @@ export class FormComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.rating);
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
   }
 }

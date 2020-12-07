@@ -1,14 +1,12 @@
 <div class="container">
     <div *ngIf="this.subjectType==='theory'">
         <div  *ngFor = "let qn of theoryQn; let indexOfElement = index;">
-            <!-- <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" (currentRateChanged)="rating[indexOfElement]=$event"></app-form-field> -->
             <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" [(currentRate)]="rating[indexOfElement]"></app-form-field>
         </div>
     </div>
     
     <div *ngIf="this.subjectType==='lab'">
         <div  *ngFor = "let qn of labQn; let indexOfElement = index;">
-            <!-- <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" (currentRateChanged)="rating[indexOfElement]=$event"></app-form-field> -->
             <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" [(currentRate)]="rating[indexOfElement]"></app-form-field>
         </div>
     </div>
