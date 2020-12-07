@@ -10,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
          if ($data && property_exists($data, "roll_no") && property_exists($data, "feedback"))
          {
             $feedback = $data->feedback;
-            echo count($feedback);
             if( count($feedback) > 0)
             {
                $flag = true;
@@ -18,14 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                   $feedback_obj = $feedback[0];
                   if ( $feedback_obj && 
                         property_exists($feedback_obj, "course_id") && 
-                        property_exists($data, "fac_id") && 
+                        property_exists($feedback_obj, "fac_id") && 
                         property_exists($feedback_obj, "feedback") && 
                         property_exists($feedback_obj, "comments")
                      ) 
                      {
                         $feedback_array = $feedback_obj->feedback;
                         $count_feedback_array = count($feedback_array);
-                        if ( $feedback_array <> 10 && $feedback_array <> 5) {
+                        if ( $count_feedback_array != 10 && $count_feedback_array != 5) {
                            $flag = false;
                         }
                      }
@@ -33,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                         $flag = false;
                      }
                }
-
+               
                if($flag) {
                   $date = date('Y-m-d H:i:s');
                   $lab_query_string = array();
                   $theory_query_string = array();
                   for ($i = 0 ; $i < count($feedback); $i++) {
-                     $feedback_obj = $feedback[0];
+                     $feedback_obj = $feedback[$i];
                      $feedback_qn_replies = $feedback_obj->feedback;
                      if(count($feedback_qn_replies) == 10 ) {
                         $query_obj_string = "('". $feedback_obj->course_id."','". $feedback_obj->fac_id."','".$date."', "
@@ -52,7 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                         .$feedback_qn_replies[6].","
                         .$feedback_qn_replies[7].","
                         .$feedback_qn_replies[8].","
-                        .$feedback_qn_replies[9].")";
+                        .$feedback_qn_replies[9].","
+                        ."'".$feedback_obj->comments."')";
 
                         array_push($theory_query_string, $query_obj_string);
                      }
@@ -62,9 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                         .$feedback_qn_replies[1].","
                         .$feedback_qn_replies[2].","
                         .$feedback_qn_replies[3].","
-                        .$feedback_qn_replies[4].")";
+                        .$feedback_qn_replies[4].","
+                        ."'".$feedback_obj->comments."')";
 
-                        array_push($theory_query_string, $query_obj_string);
+                        array_push($lab_query_string, $query_obj_string);
                      }
                   }
 
@@ -75,36 +76,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
                   for ($j = 0; $j < $theory_count; $j++) {
                      $theory_query = $theory_query. $theory_query_string[$j];
-                     if (j <> $theory_count-1) {
+                     if ($j != $theory_count-1) {
                         $theory_query = $theory_query. ",";
                      }
                   }
 
                   for ($j = 0; $j < $lab_count; $j++) {
                      $lab_query = $lab_query. $lab_query_string[$j];
-                     if (j <> $lab_count-1) {
+                     if ($j != $lab_count-1) {
                         $lab_query = $lab_query. ",";
                      }
                   }
-
                   $success_theory = true;
                   $success_lab = true;
                   $success_attendance = true;
 
-                  $attendance_query = "INSERT INTO feedback_responses VALUES ('".$data->roll_no."')";
+                  $attendance_query = "INSERT INTO FEEDBACK_RESPONSES VALUES ('".$data->roll_no."')";
 
-                  if ($conn->query($attendance_query) <> TRUE) {
+                  if ($conn->query($attendance_query) != TRUE) {
                      $success_attendance = false;
                   } 
 
                   if($theory_count > 0) {
-                     if ($conn->query($theory_query) <> TRUE) {
+                     if ($conn->query($theory_query) != TRUE) {
                         $success_theory = false;
                      }
                   }
-                  
                   if($lab_count > 0) {
-                     if ($conn->query($lab_query) === TRUE) {
+                     if ($conn->query($lab_query) != TRUE) {
                         $success_lab = false;
                      }
                   }
