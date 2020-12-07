@@ -8,6 +8,9 @@ import { SideHeaderComponent } from './side-header/side-header.component';
 import { FeedbackReportComponent } from './feedback-report/feedback-report.component';
 import { FormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { DenialPageComponent } from './denial-page/denial-page.component';
+import { FacultyLoginComponent } from './faculty-login/faculty-login.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
     SideHeaderComponent,
     FeedbackReportComponent,
     LoginPageComponent,
-    FormPageComponent
+    FormPageComponent,
+    DenialPageComponent,
+    FacultyLoginComponent,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule,
