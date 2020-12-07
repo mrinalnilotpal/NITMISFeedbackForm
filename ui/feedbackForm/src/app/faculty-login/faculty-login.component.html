@@ -7,14 +7,11 @@
       <h1>Feedback Form</h1>
       <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <div class="form-group">
-          <label for="roll-no">Roll Number</label> <br>
+          <label for="roll-no">Faculty ID</label> <br>
           <input type="text" class="form-control" id="roll-no" name="roll-no"
                  [(ngModel)]="rollNo" required #roll="ngModel"
                  (input)="validateRoll($event)">
-          <small id="anonymity" class="form-text text-muted">
-            Your response is anonymous. Roll number is only used for authentication
-          </small>
-          <span class="error" *ngIf="!roll.valid && roll.touched">Please enter a valid roll number</span>
+          <span class="error" *ngIf="!roll.valid && roll.touched">Please enter a valid ID</span>
           <span class="error" *ngIf="!isValid">Please enter a valid roll number</span>
         </div>
         <div class="form-group">
@@ -22,16 +19,8 @@
           <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required #pass="ngModel">
           <span class="error" *ngIf="!pass.valid && pass.touched">Please enter a valid password</span>
         </div>
-        <button class="btn login-button" [disabled]="!f.valid" [routerLink]="'/form'">Login</button>
+        <button class="btn login-button" [disabled]="!f.valid">Login</button>
       </form>
-      <div class="row" *ngIf="isStudent">
-        <div class="col-md-12 button-carousel">
-          <br><br><br>
-          <button class="btn simple-button" [routerLink]="'/faculty-login'">I am a faculty member</button>
-          <br>
-          <button class="btn simple-button" [routerLink]="'/admin-login'">I am an administrator</button>
-        </div>
-      </div>
     </div>
   </div>
 </div>

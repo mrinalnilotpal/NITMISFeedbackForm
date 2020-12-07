@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {NgForm} from "@angular/forms";
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.sass']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.sass']
 })
-export class LoginPageComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
 
   rollNo = "";
   password = "";
-  rollRegEx = /^(cs|me|ce|ee|ec)(\d\d)(b|m)(\d{4})$/gmi;
+  rollRegEx = /^\D{15}$/gmi;
   isValid = true;
-  isStudent = true;
 
   constructor() { }
 
@@ -28,4 +27,5 @@ export class LoginPageComponent implements OnInit {
     this.isValid = this.rollRegEx.test(validationField);
     console.log(this.isValid);
   }
+
 }
