@@ -16,6 +16,7 @@ import { FormComponent } from './form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { ModalComponent } from './modal/modal.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ModalComponent } from './modal/modal.component';
     AdminLoginComponent,
     FormComponent,
     FormFieldComponent,
-    ModalComponent
+    ModalComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

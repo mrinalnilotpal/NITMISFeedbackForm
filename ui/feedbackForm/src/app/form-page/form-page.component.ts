@@ -36,6 +36,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
   totalCourses = 0;
   comments = "";
   modelOpen = false;
+  loading = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
 
