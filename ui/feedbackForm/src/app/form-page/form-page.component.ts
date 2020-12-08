@@ -1,5 +1,7 @@
-import { Component, OnInit, ChangeDetectorRef, AfterContentChecked, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
-import { CourseData, FeedbackData } from '../types';
+import { Component, OnInit, ChangeDetectorRef, AfterContentChecked} from '@angular/core';
+import { CourseData, FeedbackData, ResponseData} from '../types';
+import { HttpClient } from "@angular/common/http";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-form-page',
@@ -37,16 +39,55 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
   comments = "";
   modelOpen = false;
   loading = false;
+  // tslint:disable-next-line: variable-name
+  roll_no = "";
+  errorUrl = "/denial";
+  successUrl = "/denial";
 
-  constructor(private cdr: ChangeDetectorRef) { }
+  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private router: Router) { }
 
   temp(event: any): void {
     console.log(event);
   }
 
   ngOnInit(): void {
+    this.loading = true;
+    this.roll_no = "CS18B1020";
+    if (this.roll_no === "") {
+      this.router.navigateByUrl("/login");
+      return;
+    }
+    this.getData();
     this.totalCourses = this.courseData.length;
     this.updateCurrent(0);
+  }
+
+  getData(): void {
+    const baseUrl = window.location.origin;
+    this.http.post<ResponseData>(baseUrl + '/api/checkFeedbackStatus',
+      { roll_no: this.roll_no }).subscribe(res => {
+        const flag = res.detail;
+        if (flag) {
+          this.router.navigateByUrl('/denial');
+          return;
+        }
+
+        this.http.post<ResponseData>(baseUrl + "/api/viewCourseFaculty",
+        { roll_no: this.roll_no}).subscribe(
+          res2 => {
+          this.courseData = res2.detail;
+          if (this.courseData.length < 1) {
+            this.router.navigateByUrl(this.errorUrl);
+            return;
+          }
+          this.loading = false;
+        },
+        (err) => {
+            this.router.navigateByUrl(this.errorUrl);
+            return;
+        });
+
+    });
   }
 
   ngAfterContentChecked(): void {
@@ -78,7 +119,19 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
 
   submitClick(): void {
     this.nextClick();
-    console.log(this.feedback);
+    const baseUrl = window.location.origin;
+    this.loading = true;
+    this.http.post<ResponseData>(baseUrl + "/api/submitFeedback",
+        { roll_no: this.roll_no,
+          feedback: this.feedback
+        }).subscribe( res => {
+          console.log(res);
+          this.router.navigateByUrl(this.successUrl);
+        },
+        (err) => {
+            this.router.navigateByUrl(this.errorUrl);
+            return;
+        });
   }
 
   updateCurrent(index: number): void {

@@ -12,3 +12,7 @@ export interface FeedbackData {
     "feedback": number[];
     "comments": string;
 }
+
+export interface ResponseData {
+    "detail": any;
+}
