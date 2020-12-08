@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-side-header',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideHeaderComponent implements OnInit {
 
-  subject = "Introduction to Transfiguration";
-  faculty = "Prof. Minerva McGonagall";
-  subjectCode = "TX 101"
+  @Input() subject = "Introduction to Transfiguration";
+  @Input() faculty = "Prof. Minerva McGonagall";
+  @Input() subjectCode = "TX 101";
 
   constructor() { }
 

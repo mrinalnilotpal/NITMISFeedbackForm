@@ -3,5 +3,15 @@
     "target": "http://localhost:8080/checkFeedbackStatus.php",
     "secure": false,
     "logLevel": "debug"
+  },
+  "/api/viewCourseFaculty": {
+    "target": "http://localhost:8080/viewCourseFaculty.php",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/submitFeedback": {
+    "target": "http://localhost:8080/submitFeedback.php",
+    "secure": false,
+    "logLevel": "debug"
   }
 }

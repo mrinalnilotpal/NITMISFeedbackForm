@@ -6,12 +6,17 @@ import { AppComponent } from './app.component';
 import { FormPageComponent } from './form-page/form-page.component';
 import { SideHeaderComponent } from './side-header/side-header.component';
 import { FeedbackReportComponent } from './feedback-report/feedback-report.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DenialPageComponent } from './denial-page/denial-page.component';
 import { FacultyLoginComponent } from './faculty-login/faculty-login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HttpClientModule } from "@angular/common/http";
+import { FormComponent } from './form/form.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormFieldComponent } from './form-field/form-field.component';
+import { ModalComponent } from './modal/modal.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +28,19 @@ import { HttpClientModule } from "@angular/common/http";
     FormPageComponent,
     DenialPageComponent,
     FacultyLoginComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    FormComponent,
+    FormFieldComponent,
+    ModalComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
