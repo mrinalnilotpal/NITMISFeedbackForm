@@ -7,6 +7,7 @@ import {AdminLoginComponent} from "./admin-login/admin-login.component";
 import {DenialPageComponent} from "./denial-page/denial-page.component";
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
 import {FacultyLandingComponent} from "./faculty-landing/faculty-landing.component";
+import {ErrorPageComponent} from "./error-page/error-page.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'denial', component: DenialPageComponent },
   { path: 'success', component: ConfirmationPageComponent },
   { path: 'faculty-landing', component: FacultyLandingComponent},
+  { path: 'error', component: ErrorPageComponent},
 ];
 
 @NgModule({

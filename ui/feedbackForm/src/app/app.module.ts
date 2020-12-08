@@ -19,6 +19,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { ModalComponent } from './modal/modal.component';
 import { LoadingComponent } from './loading/loading.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { LoadingComponent } from './loading/loading.component';
     RedBlackComponent,
     FormFieldComponent,
     ModalComponent,
-    LoadingComponent
+    LoadingComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

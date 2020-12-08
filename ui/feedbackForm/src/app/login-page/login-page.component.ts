@@ -20,7 +20,6 @@ export class LoginPageComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.fetchTouched();
   }
 
   onSubmit(form: NgForm): void{
@@ -30,14 +29,6 @@ export class LoginPageComponent implements OnInit {
   validateRoll(event: Event): void{
     const validationField = (<HTMLInputElement>event.target).value;
     this.isValid = this.rollRegEx.test(validationField);
-    console.log(this.isValid);
-  }
-
-  private fetchTouched(): void{
-    this.http.post('http://localhost:4200/api/checkFeedbackStatus',
-      {"roll_no":"cs18b1068"}).subscribe(data => {
-      console.log(data);
-    });
   }
 
   login(): void {
