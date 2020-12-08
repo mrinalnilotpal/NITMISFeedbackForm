@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmationPageComponent implements OnInit {
 
-  lineOne = "Thank you for your response"
-  lineTwo = "Have a nice day!"
+  lineOne = "Thank you for your response";
+  lineTwo = "Have a nice day!";
 
   constructor() { }
 

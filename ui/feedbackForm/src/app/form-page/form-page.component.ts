@@ -42,7 +42,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
   // tslint:disable-next-line: variable-name
   roll_no = "";
   errorUrl = "/denial";
-  successUrl = "/denial";
+  successUrl = "/success";
 
   constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private router: Router) { }
 
