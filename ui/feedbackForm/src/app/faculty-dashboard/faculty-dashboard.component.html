@@ -1,0 +1,14 @@
+<app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "subjectCode"></app-side-header>
+<div class="app-header">
+  <div class="toggle-bar">
+    <app-toggle-button [label]="'Summary'" id="summary"></app-toggle-button>
+    <app-toggle-button [label]="'Comments'" id="comments"></app-toggle-button>
+  </div>
+  <app-download-button></app-download-button>
+  </div>
+<div class="row">
+  <div class="col-md-12">
+<!--    <app-defaulter-view></app-defaulter-view>-->
+    <app-summary-view></app-summary-view>
+  </div>
+</div>

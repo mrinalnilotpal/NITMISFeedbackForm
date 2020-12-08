@@ -1,0 +1,24 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  font-family: 'Montserrat', sans-serif; }
+
+  .menu{
+      width: 100%;
+      height: fit-content;
+  }
+  .container{
+      width: 15rem;
+      display: inline-block;
+      margin: 4rem 4rem;
+  }

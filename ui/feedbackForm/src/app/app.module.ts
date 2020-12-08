@@ -20,6 +20,16 @@ import { FormFieldComponent } from './form-field/form-field.component';
 import { ModalComponent } from './modal/modal.component';
 import { LoadingComponent } from './loading/loading.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { DefaulterItemComponent } from './defaulter-item/defaulter-item.component';
+import { DefaulterViewComponent } from './defaulter-view/defaulter-view.component';
+import { SummaryViewComponent } from './summary-view/summary-view.component';
+import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { SummaryItemComponent } from './summary-item/summary-item.component';
+// import { DropdownComponent} from "./dropdown/dropdown.component";
+import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
+import { DownloadButtonComponent } from './download-button/download-button.component';
+import { SummaryHeaderComponent } from './summary-header/summary-header.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +48,17 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FormFieldComponent,
     ModalComponent,
     LoadingComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    DefaulterItemComponent,
+    DefaulterViewComponent,
+    SummaryViewComponent,
+    FacultyDashboardComponent,
+    AdminDashboardComponent,
+    SummaryItemComponent,
+    // DropdownComponent,
+    ToggleButtonComponent,
+    DownloadButtonComponent,
+    SummaryHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +66,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

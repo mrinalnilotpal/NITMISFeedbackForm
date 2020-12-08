@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorPageComponent implements OnInit {
 
-  lineOne = "Ah snap"
-  lineTwo = "An error occurred"
+  lineOne = "Ah snap :("
+  lineTwo = "An error occurred!"
 
   constructor() { }
 
