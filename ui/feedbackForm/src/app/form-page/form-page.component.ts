@@ -64,6 +64,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
             this.router.navigateByUrl(this.errorUrl);
             return;
           }
+          this.totalCourses = this.courseData.length;
           this.updateCurrent(0);
           this.loading = false;
         },
