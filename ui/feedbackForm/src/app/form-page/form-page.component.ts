@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
-import { CourseData } from '../types';
+import { CourseData, FeedbackData } from '../types';
 
 @Component({
   selector: 'app-form-page',
@@ -21,7 +21,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
         course_name: "OPERATING SYSTEMS",
         fac_id: "103",
         fac_name: "Dr. Ahilandeswari Thangarajan",
-        type: "theory"
+        type: "lab"
     }
   ];
 
@@ -30,7 +30,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
   subjectCode = "sfas";
   facId = "";
   type = "";
-  feedback: Array<number[]> = [];
+  feedback: Array<FeedbackData> = [];
   rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   currentIndex = 0;
   totalCourses = 0;
@@ -61,13 +61,18 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
         break;
       }
     }
-    if (flag === true || true) {
-      this.feedback.push(this.rating);
+    if (flag === true) {
+      this.addToFeedback();
       if (this.currentIndex < this.totalCourses - 1) {
         this.currentIndex++;
         this.updateCurrent(this.currentIndex);
       }
     }
+  }
+
+  submitClick(): void {
+    this.nextClick();
+    console.log(this.feedback);
   }
 
   updateCurrent(index: number): void {
@@ -87,5 +92,15 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
     else {
       return [0, 0, 0, 0, 0];
     }
+  }
+
+  addToFeedback(): void{
+    const data: FeedbackData = {
+      course_id: this.subjectCode,
+      fac_id: this.facId,
+      comments: this.comments,
+      feedback: this.rating,
+    };
+    this.feedback.push(data);
   }
 }
