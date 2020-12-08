@@ -118,19 +118,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
                   }
                }
                else {
-                  echo json_response(400, "Data not in proper syntax or data missing1");
+                  echo json_response(400, json_encode("Data not in proper syntax or data missing1"));
                }  
             }
             else {
-               echo json_response(400, "No Feedback Supplied");
+               echo json_response(400, json_encode("No Feedback Supplied"));
             }
          }
          else{
-            echo json_response(400, "Data not in proper syntax or data missing");
+            echo json_response(400, json_encode("Data not in proper syntax or data missing"));
          }
     }
     else 
     {    
-      echo json_response(405, $_SERVER['REQUEST_METHOD']." method not allowed");
+      echo json_response(405, json_encode($_SERVER['REQUEST_METHOD']." method not allowed"));
     }
 

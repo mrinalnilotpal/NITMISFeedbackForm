@@ -18,24 +18,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $user = $result->fetch_assoc();
                 $valid_password = password_verify($data->password, $user['PASSWORD']);
                 if ($valid_password) {
-                    echo json_response(200, "Successfully Logged in");
+                    echo json_response(200, json_encode("Successfully Logged in"));
                 }
                 else {
-                    echo json_response(401, "Incorrect Password");
+                    echo json_response(401, json_encode("Incorrect Password"));
                 }
             }
             else {
-                echo json_reponse(400, "Something went wrong");
+                echo json_reponse(400, json_encode("Something went wrong"));
             }
         } 
         else {
-            echo json_response(404, "User Account Not Found");
+            echo json_response(404, json_encode("User Account Not Found"));
         }
     }
     else {
-        echo json_response(400, "roll_no or password is not supplied");
+        echo json_response(400, json_encode("roll_no or password is not supplied"));
     }
 }
 else {
-    echo json_response(405, $_SERVER['REQUEST_METHOD']." method not allowed");
+    echo json_response(405, json_encode($_SERVER['REQUEST_METHOD']." method not allowed"));
 }
