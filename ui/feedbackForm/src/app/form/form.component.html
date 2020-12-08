@@ -10,5 +10,12 @@
             <app-form-field [question] = "qn" [slNo] = "indexOfElement + 1" [(currentRate)]="rating[indexOfElement]"></app-form-field>
         </div>
     </div>
+
+    <div class="mx-4 my-4">
+        <label for="comments" class="w-100 question">Comments (Optional)<br>
+        </label>
+        <textarea id="comments" name="comments" class="form-control" [formControl]="commentsFormControl">
+        </textarea>
+    </div>
     
 </div>

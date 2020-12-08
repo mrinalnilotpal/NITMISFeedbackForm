@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { CourseData } from '../types';
 
 @Component({
@@ -6,7 +6,7 @@ import { CourseData } from '../types';
   templateUrl: './form-page.component.html',
   styleUrls: ['./form-page.component.sass']
 })
-export class FormPageComponent implements OnInit {
+export class FormPageComponent implements OnInit, AfterContentChecked {
 
   courseData: CourseData[] = [
     {
@@ -34,16 +34,26 @@ export class FormPageComponent implements OnInit {
   rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   currentIndex = 0;
   totalCourses = 0;
+  comments = "";
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
+
+  temp(event: any): void {
+    console.log(event);
+  }
 
   ngOnInit(): void {
     this.totalCourses = this.courseData.length;
     this.updateCurrent(0);
   }
 
+  ngAfterContentChecked(): void {
+    this.cdr.detectChanges();
+  }
+
   nextClick(): void {
     console.log(this.rating);
+    console.log(this.comments);
     let flag = true;
     for (const rating of this.rating){
       if (rating === 0) {
@@ -51,7 +61,7 @@ export class FormPageComponent implements OnInit {
         break;
       }
     }
-    if (flag === true) {
+    if (flag === true || true) {
       this.feedback.push(this.rating);
       if (this.currentIndex < this.totalCourses - 1) {
         this.currentIndex++;
@@ -67,7 +77,7 @@ export class FormPageComponent implements OnInit {
     this.subjectCode = this.courseData[index].course_id;
     this.type = this.courseData[index].type;
     this.rating = this.getDefaultRating(this.type);
-    console.log(this.rating);
+    this.comments = "!!!!!!!!REFRESH STRING!!!!!!!!!!!!!!!";
   }
 
   getDefaultRating(type: string): number[]{

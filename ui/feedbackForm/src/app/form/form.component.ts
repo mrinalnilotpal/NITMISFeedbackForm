@@ -1,11 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
-
+// tslint:disable-next-line: max-line-length
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectorRef, AfterContentChecked, SimpleChange, DoCheck } from '@angular/core';
+import { FormControl } from "@angular/forms";
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.sass']
 })
-export class FormComponent implements OnInit, AfterContentChecked {
+export class FormComponent implements OnInit, AfterContentChecked, DoCheck {
+
+  commentsFormControl = new FormControl('');
+  @Input() comments = "";
+  oldComments = "";
+  @Output() commentsChange = new EventEmitter<string>();
+
   @Input() rating = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   @Input() subjectType = "theory";
 
@@ -38,6 +45,21 @@ export class FormComponent implements OnInit, AfterContentChecked {
     if (this.subjectType === "lab") {
       this.rating = [0, 0, 0, 0, 0];
     }
+  }
+
+  ngDoCheck(): void{
+      if (this.comments === "!!!!!!!!REFRESH STRING!!!!!!!!!!!!!!!") {
+        this.comments = "";
+        this.oldComments = "";
+        this.commentsChange.emit(this.comments);
+        this.commentsFormControl.setValue(this.comments);
+      }
+
+      this.comments = this.commentsFormControl.value;
+      if (this.comments !== this.oldComments) {
+        this.oldComments = this.comments;
+        this.commentsChange.emit(this.comments);
+      }
   }
 
   ngAfterContentChecked(): void {
