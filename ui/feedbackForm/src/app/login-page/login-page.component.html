@@ -22,7 +22,7 @@
           <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required #pass="ngModel">
           <span class="error" *ngIf="!pass.valid && pass.touched">Please enter a valid password</span>
         </div>
-        <button class="btn login-button" [disabled]="!f.valid" [routerLink]="'/form'">Login</button>
+        <button class="btn login-button" [disabled]="!f.valid" (click)="login()" >Login</button>
       </form>
       <div class="row" *ngIf="isStudent">
         <div class="col-md-12 button-carousel">

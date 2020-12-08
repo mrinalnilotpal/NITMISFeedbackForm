@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectorRef, AfterContentChecked} from '@angul
 import { CourseData, FeedbackData, ResponseData} from '../types';
 import { HttpClient } from "@angular/common/http";
 import {Router} from '@angular/router';
+import * as Cookies from "js-cookie";
 
 @Component({
   selector: 'app-form-page',
@@ -10,23 +11,7 @@ import {Router} from '@angular/router';
 })
 export class FormPageComponent implements OnInit, AfterContentChecked {
 
-  courseData: CourseData[] = [
-    {
-        course_id : "CS301",
-        course_name: "DATABASE MANAGEMENT SYSTEMS",
-        fac_id: "101",
-        fac_name: "Dr. Surendiran Balasubramaniam",
-        type: "theory"
-    },
-    {
-        course_id: "CS303",
-        course_name: "OPERATING SYSTEMS",
-        fac_id: "103",
-        fac_name: "Dr. Ahilandeswari Thangarajan",
-        type: "lab"
-    }
-  ];
-
+  courseData: CourseData[] = [];
   subject = "sdf";
   faculty = "asdf";
   subjectCode = "sfas";
@@ -52,14 +37,13 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
 
   ngOnInit(): void {
     this.loading = true;
-    this.roll_no = "CS18B1020";
-    if (this.roll_no === "") {
+    this.roll_no = Cookies.get("roll_no") as string;
+    console.log(this.roll_no);
+    if (this.roll_no === ""  || this.roll_no === undefined) {
       this.router.navigateByUrl("/login");
       return;
     }
     this.getData();
-    this.totalCourses = this.courseData.length;
-    this.updateCurrent(0);
   }
 
   getData(): void {
@@ -80,6 +64,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
             this.router.navigateByUrl(this.errorUrl);
             return;
           }
+          this.updateCurrent(0);
           this.loading = false;
         },
         (err) => {

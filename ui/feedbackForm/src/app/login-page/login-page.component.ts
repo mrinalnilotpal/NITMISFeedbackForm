@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
+import * as Cookies from "js-cookie";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -15,26 +17,32 @@ export class LoginPageComponent implements OnInit {
   isValid = true;
   isStudent = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.fetchTouched();
   }
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm): void{
     console.log(form);
   }
 
-  validateRoll(event: Event){
-    let validationField = (<HTMLInputElement>event.target).value;
+  validateRoll(event: Event): void{
+    const validationField = (<HTMLInputElement>event.target).value;
     this.isValid = this.rollRegEx.test(validationField);
     console.log(this.isValid);
   }
 
-  private fetchTouched(){
+  private fetchTouched(): void{
     this.http.post('http://localhost:4200/api/checkFeedbackStatus',
       {"roll_no":"cs18b1068"}).subscribe(data => {
       console.log(data);
     });
+  }
+
+  login(): void {
+    console.log(this.rollNo);
+    Cookies.set("roll_no", this.rollNo);
+    this.router.navigateByUrl("/form");
   }
 }
