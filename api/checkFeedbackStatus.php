@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     else {
-        echo json_response(400, "roll_no not supplied");
+        echo json_response(400, json_encode("roll_no not supplied"));
     }
 }
 else {

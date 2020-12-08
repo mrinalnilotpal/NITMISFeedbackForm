@@ -12,16 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data->username = strtoupper($data->username); 
         $query = "INSERT INTO student_credentials VALUES ('".$data->username."','".$password_hash."')";
         if ($conn->query($query) === TRUE) {
-            echo json_response(201, "New record created successfully");
+            echo json_response(201, json_encode("New record created successfully"));
         } 
         else {
-            echo json_response(400, "Error: " . $query . "<br>" . $conn->error);
+            echo json_response(400, json_encode("Error: " . $query . "<br>" . $conn->error));
         }
     }
     else {
-        echo json_response(400, "username or password is not supplied");
+        echo json_response(400, json_encode("username or password is not supplied"));
     }
 }
 else {
-    echo json_response(405, $_SERVER['REQUEST_METHOD']." method not allowed");
+    echo json_response(405, json_encode($_SERVER['REQUEST_METHOD']." method not allowed"));
 }

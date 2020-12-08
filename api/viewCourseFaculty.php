@@ -28,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             echo json_response(200, json_encode($course_array));
         } 
         else 
-        {    echo json_response(404, "0 results");
+        {    echo json_response(404, json_encode("0 results"));
         }
  
     }
     else 
     {
-            echo json_response(404, "User Account Not Found");
+            echo json_response(404, json_encode("User Account Not Found"));
     }
 }
 

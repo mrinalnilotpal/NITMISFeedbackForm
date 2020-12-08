@@ -12,20 +12,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             $query= "INSERT INTO theory_feedback VALUES ('".$data->COURSE_ID."','".$data->FAC_ID."','".$data->DATE."','".$data->Q_1."','".$data->Q_2."','".$data->Q_3."','".$data->Q_4."','".$data->Q_5."','".$data->Q_6."','".$data->Q_7."','".$data->Q_8."','".$data->Q_9."','".$data->Q_10."','".$data->COMMENTS."')";
             if ($conn->query($query) === TRUE) 
             {
-               echo json_response(201, "Feedback recorded successfully");
+               echo json_response(201, json_encode("Feedback recorded successfully"));
             } 
            else 
             {
-               echo json_response(400, "Error: " . $query . "<br>" . $conn->error);
+               echo json_response(400, json_encode("Error: " . $query . "<br>" . $conn->error));
             }
          }
          else
          {
-     	     echo json_response(400, "Not full");
+     	     echo json_response(400, json_encode("Not full"));
          }
     }
     else 
-    {    echo json_response(405, $_SERVER['REQUEST_METHOD']." method not allowed");
+    {    echo json_response(405, json_encode($_SERVER['REQUEST_METHOD']." method not allowed"));
     }
 
 
