@@ -1,6 +1,10 @@
 <app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "subjectCode"></app-side-header>
-<app-form [(rating)] = "rating" [subjectType]="type" [(comments)]="comments"></app-form>
-<div class="container d-flex flex-row-reverse p-3 mb-2">
-    <button class="btn button" (click)="this.nextClick()" *ngIf="this.currentIndex < (this.totalCourses-1)">Next</button>
-    <button class="btn button" (click)="this.submitClick()" *ngIf="this.currentIndex === (this.totalCourses-1)">Submit</button>
+<div class="px-4">
+    <app-form [(rating)] = "rating" [subjectType]="type" [(comments)]="comments"></app-form>
+    <div class="container d-flex flex-row-reverse p-3 mb-2">
+        <button class="btn button" (click)="this.nextClick()" *ngIf="this.currentIndex < (this.totalCourses-1)">Next</button>
+        <button class="btn button" (click)="this.submitClick()" *ngIf="this.currentIndex === (this.totalCourses-1)">Submit</button>
+    </div>
 </div>
+
+<!-- <app-modal [(modelOpen)] = "modelOpen"></app-modal> -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterContentChecked, ANALYZE_FOR_ENTRY_COMPONENTS } from '@angular/core';
 import { CourseData, FeedbackData } from '../types';
 
 @Component({
@@ -35,6 +35,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
   currentIndex = 0;
   totalCourses = 0;
   comments = "";
+  modelOpen = false;
 
   constructor(private cdr: ChangeDetectorRef) { }
 
@@ -67,6 +68,10 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
         this.currentIndex++;
         this.updateCurrent(this.currentIndex);
       }
+    }
+    else{
+      // this.modelOpen = true;
+      alert("Please answer all questions to continue");
     }
   }
 

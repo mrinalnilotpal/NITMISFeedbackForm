@@ -15,6 +15,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from './form/form.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormFieldComponent } from './form-field/form-field.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { FormFieldComponent } from './form-field/form-field.component';
     FacultyLoginComponent,
     AdminLoginComponent,
     FormComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
