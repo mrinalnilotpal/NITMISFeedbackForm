@@ -6,6 +6,7 @@ import {FacultyLoginComponent} from "./faculty-login/faculty-login.component";
 import {AdminLoginComponent} from "./admin-login/admin-login.component";
 import {DenialPageComponent} from "./denial-page/denial-page.component";
 import { ConfirmationPageComponent } from './confirmation-page/confirmation-page.component';
+import {FacultyLandingComponent} from "./faculty-landing/faculty-landing.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'admin-login', component: AdminLoginComponent },
   { path: 'denial', component: DenialPageComponent },
   { path: 'success', component: ConfirmationPageComponent },
+  { path: 'faculty-landing', component: FacultyLandingComponent},
 ];
 
 @NgModule({

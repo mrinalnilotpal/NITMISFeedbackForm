@@ -13,6 +13,8 @@ import { FacultyLoginComponent } from './faculty-login/faculty-login.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FormComponent } from './form/form.component';
+import { FacultyLandingComponent} from "./faculty-landing/faculty-landing.component";
+import {RedBlackComponent} from "./red-black/red-black.component";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormFieldComponent } from './form-field/form-field.component';
 import { ModalComponent } from './modal/modal.component';
@@ -30,6 +32,8 @@ import { LoadingComponent } from './loading/loading.component';
     FacultyLoginComponent,
     AdminLoginComponent,
     FormComponent,
+    FacultyLandingComponent,
+    RedBlackComponent,
     FormFieldComponent,
     ModalComponent,
     LoadingComponent
