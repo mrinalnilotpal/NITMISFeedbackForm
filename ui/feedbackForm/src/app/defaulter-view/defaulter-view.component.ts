@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DefaulterData } from '../types';
 
 @Component({
   selector: 'app-defaulter-view',
@@ -7,28 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DefaulterViewComponent implements OnInit {
 
-  defaulters = [
-    {
-      rollNo: "CS18B1020",
-      name: "Ramar Seetha Dhayanithi"
-    },
-    {
-      rollNo: "CS18B1020",
-      name: "Ramar Seetha Dhayanithi"
-    },
-    {
-      rollNo: "CS18B1020",
-      name: "Ramar Seetha Dhayanithi"
-    },
-    {
-      rollNo: "CS18B1020",
-      name: "Ramar Seetha Dhayanithi"
-    },
-    {
-      rollNo: "CS18B1020",
-      name: "Ramar Seetha Dhayanithi"
-    },
-  ]
+  @Input() defaulters: DefaulterData[] = [];
 
   constructor() { }
 

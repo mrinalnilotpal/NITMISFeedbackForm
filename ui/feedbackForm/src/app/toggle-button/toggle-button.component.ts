@@ -11,12 +11,12 @@ export class ToggleButtonComponent implements OnInit {
 
   constructor() { }
 
-  @Input() label: string = "";
+  @Input() label = "";
 
   ngOnInit(): void {
   }
 
-  onClick(){
+  onClick(): void{
     this.isEnabled = true;
   }
 
