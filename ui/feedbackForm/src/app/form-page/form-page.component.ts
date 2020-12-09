@@ -51,7 +51,7 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
     this.http.post<ResponseData>(baseUrl + '/api/checkFeedbackStatus',
       { roll_no: this.roll_no }).subscribe(res => {
         const flag = res.detail;
-        if (!flag) {
+        if (flag) {
           this.router.navigateByUrl('/denial');
           return;
         }
