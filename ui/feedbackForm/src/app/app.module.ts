@@ -30,6 +30,7 @@ import { SummaryItemComponent } from './summary-item/summary-item.component';
 import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
 import { DownloadButtonComponent } from './download-button/download-button.component';
 import { SummaryHeaderComponent } from './summary-header/summary-header.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SummaryHeaderComponent } from './summary-header/summary-header.componen
     // DropdownComponent,
     ToggleButtonComponent,
     DownloadButtonComponent,
-    SummaryHeaderComponent
+    SummaryHeaderComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
