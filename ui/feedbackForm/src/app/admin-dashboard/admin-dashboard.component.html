@@ -1,1 +1,25 @@
-<p>admin-dashboard works!</p>
+<div>
+    <!-- <app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "courseId"></app-side-header> -->
+    <div class="app-header">
+      <div class="toggle-bar container d-flex flex-row justify-content-center">
+        <div>
+          <button class="btn" (click) = "onClick(defaulterLabel)">
+            <h4 [ngStyle]="{color: !isSummary ? '#E81717' : 'black'}">{{ defaulterLabel }}</h4>
+          </button>
+        </div>
+        <div>
+            <button class="btn mx-5" (click) = "onClick(summaryLabel)">
+              <h4 [ngStyle]="{color: isSummary ? '#E81717' : 'black'}">{{ summaryLabel }}</h4>
+            </button>
+        </div>      
+      </div>
+      <app-download-button (click)="downloadReport()" *ngIf="!loading"></app-download-button>
+    </div>
+    <app-dropdown></app-dropdown>
+    <div *ngIf="!loading">
+        <div class="container list"  *ngFor="let i of defaulter" >
+            <app-red-black red="i.roll_no" black="i.name"></app-red-black>    
+        </div>
+    </div>
+  </div>
+  <app-loading [loading]="loading"></app-loading>

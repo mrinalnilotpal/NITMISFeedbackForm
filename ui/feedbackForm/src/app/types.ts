@@ -23,3 +23,8 @@ export interface GetCoursesData {
     "course": string;
     "type": string;
 }
+
+export interface DefaulterData {
+    "roll_no": string;
+    "name": string;
+}

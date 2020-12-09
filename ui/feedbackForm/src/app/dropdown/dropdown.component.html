@@ -1,48 +1,48 @@
-<!--<div class="menu"><div class="container">-->
-<!--    <form [formGroup]="form_course" (ngSubmit)="submit()">-->
+<div class="menu"><div class="container">
+   <form [formGroup]="form_course" (ngSubmit)="submit()">
 
-<!--        <div class="form-group">-->
-<!--            <label for="course"></label>-->
-<!--            <select formControlName="course" class="form-control" id="course" (change)="changeCourse($event)">-->
-<!--                <option disabled>Select Course</option>-->
-<!--                <option>Course</option>-->
-<!--                <option *ngFor="let c of courseList">{{c}}</option>-->
-<!--            </select>-->
-<!--            <div *ngIf="f.course.touched && f.course.invalid" class="alert alert-danger">-->
-<!--                <div *ngIf="f.course.errors.required">Course is required.</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--  </div>-->
-<!--  <div class="container">-->
-<!--    <form [formGroup]="form_department" (ngSubmit)="submit()">-->
+       <div class="form-group">
+           <label for="course"></label>
+           <select formControlName="course" class="form-control" id="course" (change)="changeCourse($event)">
+               <option disabled>Select Course</option>
+               <option>Course</option>
+               <option *ngFor="let c of courseList">{{c}}</option>
+           </select>
+           <div *ngIf="f.course.touched && f.course.invalid" class="alert alert-danger">
+               <!-- <div *ngIf="f.course.errors.required!">Course is required.</div> -->
+           </div>
+       </div>
+   </form>
+ </div>
+ <div class="container">
+   <form [formGroup]="form_department" (ngSubmit)="submit()">
 
-<!--      <div class="form-group">-->
-<!--          <label for="department"></label>-->
-<!--          <select formControlName="department" class="form-control" id="department" (change)="changeDepartment($event)">-->
-<!--              <option disabled>Select Department</option>-->
-<!--              <option>Department</option>-->
-<!--              <option *ngFor="let d of departmentList">{{d}}</option>-->
-<!--          </select>-->
-<!--          <div *ngIf="g.department.touched && g.department.invalid" class="alert alert-danger">-->
-<!--              <div *ngIf="g.department.errors.required">Department is required.</div>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--  </form>-->
-<!--  </div>-->
-<!--  <div class="container">-->
-<!--    <form [formGroup]="form_year" (ngSubmit)="submit()">-->
+     <div class="form-group">
+         <label for="department"></label>
+         <select formControlName="department" class="form-control" id="department" (change)="changeDepartment($event)">
+             <option disabled>Select Department</option>
+             <option>Department</option>
+             <option *ngFor="let d of departmentList">{{d}}</option>
+         </select>
+         <div *ngIf="g.department.touched && g.department.invalid" class="alert alert-danger">
+             <!-- <div *ngIf="g.department.errors.required!">Department is required.</div> -->
+         </div>
+     </div>
+ </form>
+ </div>
+ <div class="container">
+   <form [formGroup]="form_year" (ngSubmit)="submit()">
 
-<!--      <div class="form-group">-->
-<!--          <label for="year"></label>-->
-<!--          <select formControlName="website" class="form-control" id="year" (change)="changeYear($event)">-->
-<!--              <option disabled>Select year</option>-->
-<!--              <option>Year</option>-->
-<!--              <option *ngFor="let y of yearList">{{y}}</option>-->
-<!--          </select>-->
-<!--          <div *ngIf="h.year.touched && h.year.invalid" class="alert alert-danger">-->
-<!--              <div *ngIf="h.year.errors.required">Year is required.</div>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--  </form>-->
-<!--  </div></div>-->
+     <div class="form-group">
+         <label for="year"></label>
+         <select formControlName="website" class="form-control" id="year" (change)="changeYear($event)">
+             <option disabled>Select year</option>
+             <option>Year</option>
+             <option *ngFor="let y of yearList">{{y}}</option>
+         </select>
+         <div *ngIf="h.year.touched && h.year.invalid" class="alert alert-danger">
+             <!-- <div *ngIf="h.year.errors.required!">Year is required.</div> -->
+         </div>
+     </div>
+ </form>
+ </div></div>

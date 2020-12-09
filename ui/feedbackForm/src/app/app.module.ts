@@ -25,7 +25,7 @@ import { SummaryViewComponent } from './summary-view/summary-view.component';
 import { FacultyDashboardComponent } from './faculty-dashboard/faculty-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { SummaryItemComponent } from './summary-item/summary-item.component';
-// import { DropdownComponent} from "./dropdown/dropdown.component";
+import { DropdownComponent} from "./dropdown/dropdown.component";
 import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
 import { DownloadButtonComponent } from './download-button/download-button.component';
 import { SummaryHeaderComponent } from './summary-header/summary-header.component';
@@ -54,7 +54,7 @@ import { CommentsComponent } from './comments/comments.component';
     FacultyDashboardComponent,
     AdminDashboardComponent,
     SummaryItemComponent,
-    // DropdownComponent,
+    DropdownComponent,
     ToggleButtonComponent,
     DownloadButtonComponent,
     SummaryHeaderComponent,
