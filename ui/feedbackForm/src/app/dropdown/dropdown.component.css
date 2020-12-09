@@ -11,14 +11,22 @@ html {
 body {
   box-sizing: border-box;
   position: relative;
-  font-family: 'Montserrat', sans-serif; }
+  font-family: 'Montserrat', sans-serif; 
+}
 
-  .menu{
-      width: 100vw;
-      height: fit-content;
-  }
-  .container{
-      width: 15rem;
-      display: inline-block;
-      margin: 4rem 4rem;
-  }
+.menu{
+    width: 100vw;
+    height: fit-content;
+}
+.container{
+    width: 15rem;
+    display: inline-block;
+    margin: 4rem 4rem;
+}
+
+label {
+  padding: 0.2em;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}

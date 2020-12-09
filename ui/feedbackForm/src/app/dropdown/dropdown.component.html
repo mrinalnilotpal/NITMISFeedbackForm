@@ -1,7 +1,7 @@
 <div class="d-flex flex-row justify-content-center">
     <div class="container">
        <div class="form-group">
-           <label for="course"></label>
+           <label for="course">Select Course</label>
            <select class="form-control" id="course" (change)="changeCourse($event)">
                <option disabled>Select Course</option>
                <option *ngFor="let c of courseList">{{c}}</option>
@@ -11,7 +11,7 @@
 
     <div class="container">
         <div class="form-group">
-            <label for="department"></label>
+            <label for="department">Select Department</label>
             <select class="form-control" id="department" (change)="changeDepartment($event)">
                 <option disabled>Select Department</option>
                 <option *ngFor="let d of departmentList">{{d}}</option>
@@ -21,7 +21,7 @@
 
     <div class="container">
         <div class="form-group">
-            <label for="year"></label>
+            <label for="year">Select Year</label>
             <select class="form-control" id="year" (change)="changeYear($event)">
                 <option disabled>Select year</option>
                 <option *ngFor="let y of yearList">{{y}}</option>
