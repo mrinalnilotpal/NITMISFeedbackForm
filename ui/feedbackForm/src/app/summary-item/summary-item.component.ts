@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SummaryItemComponent implements OnInit {
 
   @Input() question: string = '';
-  @Input() points: number = 0.0;
+  @Input() points: string = "";
 
   constructor() { }
 

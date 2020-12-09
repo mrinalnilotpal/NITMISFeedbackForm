@@ -45,4 +45,8 @@ export class FacultyLandingComponent implements OnInit {
         );
   }
 
+  onClickCourse(courseId: string): void{
+    this.router.navigateByUrl("/faculty-dashboard?course_id=" + courseId);
+  }
+
 }

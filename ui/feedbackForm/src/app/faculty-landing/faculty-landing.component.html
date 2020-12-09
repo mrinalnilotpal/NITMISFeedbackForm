@@ -1,7 +1,7 @@
 <div class="row parent" *ngIf="!loading">
   <div class="col-md-8">
     <h1>Choose your class</h1>
-    <app-red-black *ngFor="let value of values" [red]="value.course_id" [black]="value.course">
+    <app-red-black *ngFor="let value of values" [red]="value.course_id" [black]="value.course" (click)="onClickCourse(value.course_id)">
     </app-red-black>
   </div>
 </div>

@@ -1,25 +1,28 @@
-<app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "subjectCode"></app-side-header>
-<div class="app-header">
-  <div class="toggle-bar container d-flex flex-row justify-content-center">
-    <div>
-      <button class="btn mx-5" (click) = "onClick(summarylabel)">
-        <h4 [ngStyle]="{color: !isComments ? '#E81717' : 'black'}">{{ summarylabel }}</h4>
-      </button>
+<div *ngIf="!loading">
+  <app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "subjectCode"></app-side-header>
+  <div class="app-header">
+    <div class="toggle-bar container d-flex flex-row justify-content-center">
+      <div>
+        <button class="btn mx-5" (click) = "onClick(summarylabel)">
+          <h4 [ngStyle]="{color: !isComments ? '#E81717' : 'black'}">{{ summarylabel }}</h4>
+        </button>
+      </div>
+      <div>
+        <button class="btn" (click) = "onClick(commentlabel)">
+          <h4 [ngStyle]="{color: isComments ? '#E81717' : 'black'}">{{ commentlabel }}</h4>
+        </button>
+      </div>        
     </div>
-    <div>
-      <button class="btn" (click) = "onClick(commentlabel)">
-        <h4 [ngStyle]="{color: isComments ? '#E81717' : 'black'}">{{ commentlabel }}</h4>
-      </button>
-    </div>        
+    <app-download-button></app-download-button>
   </div>
-  <app-download-button></app-download-button>
-  </div>
-<div class="container">
-  <!-- <div class="col-md-12"> -->
-<!--    <app-defaulter-view></app-defaulter-view>-->
-    <app-summary-view *ngIf="!isComments"></app-summary-view>
-    <div class="container" *ngIf="isComments">
-      <app-comments></app-comments>
+  <div class="container">
+    <!-- <div class="col-md-12"> -->
+      <!--    <app-defaulter-view></app-defaulter-view>-->
+      <app-summary-view *ngIf="!isComments" [feedback] = "feedback" [courseType] = "courseType"></app-summary-view>
+      <div class="container" *ngIf="isComments">
+        <app-comments></app-comments>
+      </div>
+      <!-- </div> -->
     </div>
-  <!-- </div> -->
 </div>
+<app-loading [loading]="loading"></app-loading>

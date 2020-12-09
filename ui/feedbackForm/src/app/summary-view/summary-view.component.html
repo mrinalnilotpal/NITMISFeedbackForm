@@ -1,4 +1,4 @@
 <div>
-  <app-summary-header [question]="'Your Aggregate Score'" [points]="5"></app-summary-header>
-  <app-summary-item *ngFor = "let item of items" [question]="item.question" [points]="item.points"></app-summary-item>
+  <app-summary-header [question]="'Your Aggregate Score'" [points]="avg"></app-summary-header>
+  <app-summary-item *ngFor = "let item of questions; let qnNo = index;" [question]="item" [points]="feedbackPrecision[qnNo]"></app-summary-item>
 </div>

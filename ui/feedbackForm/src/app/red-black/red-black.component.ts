@@ -15,10 +15,4 @@ export class RedBlackComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  onClick(){
-    this.router.navigateByUrl('/faculty-dashboard');
-  }
-
-
 }
