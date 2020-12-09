@@ -17,6 +17,9 @@
 <div class="container">
   <!-- <div class="col-md-12"> -->
 <!--    <app-defaulter-view></app-defaulter-view>-->
-    <app-summary-view></app-summary-view>
+    <app-summary-view *ngIf="!isComments"></app-summary-view>
+    <div class="container" *ngIf="isComments">
+      <h1>Comments</h1>
+    </div>
   <!-- </div> -->
 </div>
