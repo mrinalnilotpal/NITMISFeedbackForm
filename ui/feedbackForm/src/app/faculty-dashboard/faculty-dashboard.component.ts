@@ -14,7 +14,6 @@ export class FacultyDashboardComponent implements OnInit {
 
   subject = 'Introduction to Mechatronics';
   faculty = 'Guna M';
-  subjectCode = 'ME1001';
   feedback: string[] = [];
   courseType = "";
   commentlabel = "Comments";
