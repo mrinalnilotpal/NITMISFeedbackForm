@@ -13,5 +13,25 @@
     "target": "http://localhost:8080/submitFeedback.php",
     "secure": false,
     "logLevel": "debug"
+  },
+  "/api/defaulter": {
+    "target": "http://localhost:8080/defaulter.php",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/getCourses": {
+    "target": "http://localhost:8080/getCourses.php",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/feedbackReport": {
+    "target": "http://localhost:8080/feedbackReport.php",
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/api/feedbackComments": {
+    "target": "http://localhost:8080/feedbackComments.php",
+    "secure": false,
+    "logLevel": "debug"
   }
 }

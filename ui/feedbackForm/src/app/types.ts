@@ -16,3 +16,10 @@ export interface FeedbackData {
 export interface ResponseData {
     "detail": any;
 }
+
+export interface GetCoursesData {
+    "course_id": string;
+    "fac_id": string;
+    "course": string;
+    "type": string;
+}
