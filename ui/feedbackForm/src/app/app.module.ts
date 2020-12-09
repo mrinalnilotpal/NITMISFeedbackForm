@@ -30,6 +30,7 @@ import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
 import { DownloadButtonComponent } from './download-button/download-button.component';
 import { SummaryHeaderComponent } from './summary-header/summary-header.component';
 import { CommentsComponent } from './comments/comments.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CommentsComponent } from './comments/comments.component';
     ToggleButtonComponent,
     DownloadButtonComponent,
     SummaryHeaderComponent,
-    CommentsComponent
+    CommentsComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     BrowserModule,
