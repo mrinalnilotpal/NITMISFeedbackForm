@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {createpdf} from '../pdfmake-helper/pdfmake';
+import {createpdf} from './pdfmake';
 
-@Component({
-  selector: 'app-feedback-report',
-  templateUrl: './feedback-report.component.html',
-  styleUrls: ['./feedback-report.component.sass']
-})
-export class FeedbackReportComponent implements OnInit {
+export class FeedbackReport {
 
   courseId = 'TX101';
   course = 'Introduction to Programming';
   faculty = 'Dr. Stephen Strange';
-  feedback = [9, 8, 7, 6, 5, 5, 2, 8, 9, 10];
-  // feedback = [9, 8, 7, 6, 5];
+  feedback: string [] = [];
+  total = "0";
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(courseId: string, course: string, faculty: string, feedback: string[]) {
+    this.courseId = courseId;
+    this.course = course;
+    this.faculty = faculty;
+    let total = 0;
+    feedback.forEach(value => {
+      const floatVal = parseFloat(value);
+      total += floatVal;
+      this.feedback.push(floatVal.toPrecision(2));
+    });
+    this.total = total.toPrecision(3);
   }
 
   download(): void {
@@ -78,7 +80,7 @@ export class FeedbackReportComponent implements OnInit {
             fontSize: 16,
             lineHeight,
             style: ['center', 'bold'],
-            margin: [35, 0, 0, 0] 
+            margin: [35, 0, 0, 0]
           },
         ]],
       },
@@ -90,7 +92,7 @@ export class FeedbackReportComponent implements OnInit {
     return header;
   }
 
-  getContent(courseId: string, course: string, faculty: string, feedback: Array<number>): Array<any>{
+  getContent(courseId: string, course: string, faculty: string, feedback: Array<string>): Array<any>{
 
     const theoryQn = [
       'Lectures are well prepared',
@@ -114,7 +116,6 @@ export class FeedbackReportComponent implements OnInit {
     ];
 
     const data: any[] = [];
-    let total = 0;
 
     const getRow = (i: number, typeOfCourse: 'theory' | 'lab'): Array<any> => {
       return [
@@ -146,13 +147,12 @@ export class FeedbackReportComponent implements OnInit {
     for (let i = 0; i < count; i++) {
       const row = getRow(i, type);
       data.push(row);
-      total += feedback[i];
     }
 
     const totalText = 'Total ' + (type === 'theory' ? '(100)' : '(50)');
     const totalRow = ['',
                       { text: totalText, style: ['bold', 'right']},
-                      { text: total.toString(), style: ['bold', 'center']}
+                      { text: this.total, style: ['bold', 'center']}
                     ];
     data.push(totalRow);
 

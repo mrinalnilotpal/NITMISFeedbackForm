@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormPageComponent } from './form-page/form-page.component';
 import { SideHeaderComponent } from './side-header/side-header.component';
-import { FeedbackReportComponent } from './feedback-report/feedback-report.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { DenialPageComponent } from './denial-page/denial-page.component';
@@ -37,7 +36,6 @@ import { CommentsComponent } from './comments/comments.component';
     AppComponent,
     FormPageComponent,
     SideHeaderComponent,
-    FeedbackReportComponent,
     LoginPageComponent,
     FormPageComponent,
     DenialPageComponent,

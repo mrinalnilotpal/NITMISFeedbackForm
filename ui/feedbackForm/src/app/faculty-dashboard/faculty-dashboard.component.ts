@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import * as Cookies from "js-cookie";
 import { CourseData, FeedbackData, ResponseData} from '../types';
+import { FeedbackReport } from "../pdfmake-helper/feedback-report";
 
 @Component({
   selector: 'app-faculty-dashboard',
@@ -23,6 +24,8 @@ export class FacultyDashboardComponent implements OnInit {
   facId = "";
   loading = true;
   errorUrl = "/error";
+  reportGenerator: undefined| FeedbackReport = undefined;
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
@@ -52,9 +55,9 @@ export class FacultyDashboardComponent implements OnInit {
           (res) => {
             this.faculty = res.detail.fac_name;
             this.subject = res.detail.course_name;
-            this.subject = res.detail.course_name;
             this.courseType = res.detail.course_type;
             this.feedback = res.detail.feedback;
+            this.reportGenerator = new FeedbackReport(this.courseId, this.subject, this.faculty, this.feedback);
             this.loading = false;
           },
           err => {
@@ -68,5 +71,9 @@ export class FacultyDashboardComponent implements OnInit {
     else {
       this.isComments = false;
     }
+  }
+
+  downloadReport(): void {
+    this.reportGenerator?.download();
   }
 }
