@@ -1,8 +1,16 @@
 <app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "subjectCode"></app-side-header>
 <div class="app-header">
-  <div class="toggle-bar">
-    <app-toggle-button [label]="'Summary'" id="summary"></app-toggle-button>
-    <app-toggle-button [label]="'Comments'" id="comments"></app-toggle-button>
+  <div class="toggle-bar container d-flex flex-row justify-content-center">
+    <div>
+      <button class="btn mx-5" (click) = "onClick(summarylabel)">
+        <h4 [ngStyle]="{color: !isComments ? '#E81717' : 'black'}">{{ summarylabel }}</h4>
+      </button>
+    </div>
+    <div>
+      <button class="btn" (click) = "onClick(commentlabel)">
+        <h4 [ngStyle]="{color: isComments ? '#E81717' : 'black'}">{{ commentlabel }}</h4>
+      </button>
+    </div>        
   </div>
   <app-download-button></app-download-button>
   </div>
