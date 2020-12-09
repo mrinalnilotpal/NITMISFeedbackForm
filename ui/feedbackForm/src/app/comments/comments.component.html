@@ -1,1 +1,7 @@
-<p>comments works!</p>
+<div class="container">
+    <div *ngFor="let comment of comments">
+        <div class="comments">{{comment}}</div>
+    </div>
+
+    <div class="comments text-center p-5" *ngIf="comments.length===0">No comments...</div>
+</div>

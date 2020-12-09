@@ -25,6 +25,7 @@ export class FacultyDashboardComponent implements OnInit {
   loading = true;
   errorUrl = "/error";
   reportGenerator: undefined| FeedbackReport = undefined;
+  comments: string[] = ["adsfasdf"];
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) { }
 
@@ -58,7 +59,20 @@ export class FacultyDashboardComponent implements OnInit {
             this.courseType = res.detail.course_type;
             this.feedback = res.detail.feedback;
             this.reportGenerator = new FeedbackReport(this.courseId, this.subject, this.faculty, this.feedback);
-            this.loading = false;
+            this.http.post<ResponseData>(baseUrl + "/api/feedbackComments",
+            {
+              course_id: this.courseId,
+              fac_id: this.facId,
+              course_type: this.courseType
+            }).subscribe( res2 => {
+              this.comments = res2.detail;
+              this.loading = false;
+            },
+            err => {
+              this.router.navigateByUrl(this.errorUrl);
+              this.loading = false;
+              return;
+            });
           },
           err => {
             this.router.navigateByUrl(this.errorUrl);

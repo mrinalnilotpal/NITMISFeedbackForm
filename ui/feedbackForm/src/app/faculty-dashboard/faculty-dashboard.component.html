@@ -16,13 +16,8 @@
     <app-download-button (click)="downloadReport()"></app-download-button>
   </div>
   <div class="container">
-    <!-- <div class="col-md-12"> -->
-      <!--    <app-defaulter-view></app-defaulter-view>-->
       <app-summary-view *ngIf="!isComments" [feedback] = "feedback" [courseType] = "courseType"></app-summary-view>
-      <div class="container" *ngIf="isComments">
-        <app-comments></app-comments>
-      </div>
-      <!-- </div> -->
+      <app-comments *ngIf="isComments" [comments]="comments"></app-comments>
     </div>
 </div>
 <app-loading [loading]="loading"></app-loading>
