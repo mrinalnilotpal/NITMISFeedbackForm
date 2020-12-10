@@ -31,6 +31,7 @@ import { DownloadButtonComponent } from './download-button/download-button.compo
 import { SummaryHeaderComponent } from './summary-header/summary-header.component';
 import { CommentsComponent } from './comments/comments.component';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { DropdownCoursesComponent } from './dropdown-courses/dropdown-courses.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
     DownloadButtonComponent,
     SummaryHeaderComponent,
     CommentsComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    DropdownCoursesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,32 +2,52 @@
     <!-- <app-side-header [subject] = "subject" [faculty] = "faculty" [subjectCode] = "courseId"></app-side-header> -->
     <div class="app-header">
       <div class="toggle-bar container d-flex flex-row justify-content-center p-4">
-        <!-- <div> -->
-          <!-- <button class="btn" (click) = "onClick(defaulterLabel)"> -->
+        <div>
+          <button class="btn" (click) = "onClick(defaulterLabel)">
             <h4 [ngStyle]="{color: !isSummary ? '#E81717' : 'black'}">{{ defaulterLabel }}</h4>
-          <!-- </button> -->
-        <!-- </div> -->
-        <!-- <div>
+          </button>
+        </div>
+        <div>
             <button class="btn mx-5" (click) = "onClick(summaryLabel)">
               <h4 [ngStyle]="{color: isSummary ? '#E81717' : 'black'}">{{ summaryLabel }}</h4>
             </button>
-        </div>       -->
+        </div> 
       </div>
       <app-download-button (click)="downloadReport()" *ngIf="!loading"></app-download-button>
     </div>
     <!-- <h1> -->
       <!-- Sel  -->
     <!-- </h1> -->
-    <app-dropdown
-      [courseList]="courseList"
-      [departmentList] = "departmentList"
-      [yearList] = "yearList"
-      (courseChange)="course=$event" 
-      (departmentChange)="department=$event" 
-      (yearChange)="year=$event"
-    ></app-dropdown>
-    <div *ngIf="!loading" class="container">
-        <app-defaulter-view [defaulters]="defaulter"></app-defaulter-view>
+    <div *ngIf="!isSummary">
+        <app-dropdown
+        [courseList]="courseList"
+        [departmentList] = "departmentList"
+        [yearList] = "yearList"
+        (courseChange)="course=$event" 
+        (departmentChange)="department=$event" 
+        (yearChange)="year=$event"
+        ></app-dropdown>
+        
+        <div *ngIf="!loading" class="container">
+          <app-defaulter-view [defaulters]="defaulter"></app-defaulter-view>
+        </div>
+      </div>
     </div>
+    
+    <div *ngIf="isSummary">
+    <app-dropdown-courses
+    [courseList]="courseList"
+    [departmentList] = "departmentList"
+    [yearList] = "yearList"
+ 
+    (facultyChange)="faculty=$event"
+    (selectedSubjectChange)="subject=$event"
+    ></app-dropdown-courses>
+    <app-side-header *ngIf="feedback.length !=0" [subject]="subject!.course_name" [subjectCode]="subject!.course_id" [faculty]="faculty!.fac_name"></app-side-header>
+    <app-summary-view *ngIf="feedback.length != 0" [feedback] = "feedback" [courseType] = "subject!.type"></app-summary-view>
+    <br>
+    <br>
+    <br>
   </div>
+    
   <app-loading-spinner [loading]="loading"></app-loading-spinner>

@@ -1,9 +1,8 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { DefaulterData, ResponseData } from '../types';
+import { Component, DoCheck, OnInit} from '@angular/core';
+import { CoursesData, DefaulterData, FacultyData, ResponseData } from '../types';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
-import * as Cookies from "js-cookie";
-import { reduceEachTrailingCommentRange } from 'typescript';
+import { FeedbackReport } from '../pdfmake-helper/feedback-report';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -29,6 +28,17 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
   oldCourse = "";
   oldYear = 0;
   oldDepartment = "";
+
+  feedback: string[] = [];
+
+  subject: CoursesData | undefined = undefined;
+  faculty: FacultyData | undefined = undefined;
+
+
+  oldSubject: CoursesData | undefined = undefined;
+  oldFaculty: FacultyData | undefined = undefined;
+
+
   errorUrl = "/error";
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
@@ -42,6 +52,7 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
     this.oldCourse = this.course;
     this.oldYear = this.year;
     this.oldDepartment = this.department;
+    this.isSummary = false;
 
     this.getDefaulters();
   }
@@ -58,6 +69,17 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
     if (this.oldYear !== this.year) {
       this.oldYear = this.year;
       this.getDefaulters();
+    }
+
+    if(this.faculty !== this.oldFaculty){
+      this.oldFaculty = this.faculty;
+      this.getReport();
+    }
+    
+    if(this.subject !== this.oldSubject){
+      this.oldSubject = this.subject;
+      console.log(this.subject);
+      this.getReport();
     }
 
   }
@@ -96,8 +118,35 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
     }
   }
 
-  downloadReport(): void {
-    // this.reportGenerator?.download();
-  }
+
+  getReport(): void {
+    this.feedback = [];
+    if(this.faculty != undefined && this.subject != undefined) {
+      const baseUrl =  window.location.origin;
+      this.loading = true;
+      this.http.post<ResponseData>(baseUrl + "/api/feedbackReport",
+      { fac_id: this.faculty.fac_id, course_id: this.subject.course_id}).subscribe(
+        (res) => {
+          this.feedback = res.detail.feedback;
+          this.loading = false;
+        },
+        err => {
+          this.router.navigateByUrl(this.errorUrl);
+          this.loading = false;
+        });
+      }
+      }
+      downloadReport(): void {
+        
+        if(this.isSummary){
+          if(this.feedback.length > 0) {
+            const feedbackReport = new FeedbackReport(this.subject!.course_id, this.subject!.course_name, this.faculty!.fac_name, this.feedback);
+            feedbackReport.download();
+          }
+          else {
+            alert("No Feedback available");
+          }
+        }
+      }
 
 }
