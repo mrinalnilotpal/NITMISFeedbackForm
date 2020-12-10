@@ -52,7 +52,11 @@ export class SummaryReport {
       }
     };
 
-    createpdf(docDefinition, this.courseId + ' Feedback Report');
+    createpdf(docDefinition, this.getFilenameSafeString("Feedback Defaulters " + this.course + "_" + this.department + "_" + this.year));
+  }
+
+  getFilenameSafeString(s: string) {
+    return s.replace(/[^a-z0-9]/gi, '_');
   }
 
   getHeader(): Array<any> {
@@ -118,7 +122,7 @@ export class SummaryReport {
         },
         {
           text: name,
-          style: ['center']
+          style: []
         }];
     };
 
@@ -129,15 +133,15 @@ export class SummaryReport {
 
 
     const content = [
-      {text: 'Cumulative Feedback Report', fontSize: 12, style: ['bold', 'center'], margin: [0, 0, 0, 10]},
+      {text: 'Feedback Defaulters', fontSize: 12, style: ['bold', 'center'], margin: [0, 0, 0, 10]},
       {text: [ { text: 'Course : ', style: ['bold']}, course]},
-      {text: [ { text: 'Year : ', style: ['bold'] }, year]},
       {text: [ { text: 'Department : ', style: ['bold'] }, department]},
+      {text: [ { text: 'Year : ', style: ['bold'] }, year]},
       {
         margin: [0, 20, 0, 0 ],
         table: {
           headerRows: 1,
-          widths: [ '10%', '*', '10%' ],
+          widths: [ '10%', '20%', '*' ],
           body: [
             [
               { text: 'Sl. No', style: ['center', 'bold' ]},

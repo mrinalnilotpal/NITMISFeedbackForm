@@ -3,9 +3,6 @@ import { CoursesData, DefaulterData, FacultyData, ResponseData } from '../types'
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HttpClient } from "@angular/common/http";
 import { FeedbackReport } from '../pdfmake-helper/feedback-report';
-import * as Cookies from "js-cookie";
-import { reduceEachTrailingCommentRange } from 'typescript';
-import {FeedbackReport} from "../pdfmake-helper/feedback-report";
 import { SummaryReport } from "../pdfmake-helper/summary-report";
 
 @Component({
@@ -44,8 +41,6 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
 
 
   errorUrl = "/error";
-
-  reportGenerator: undefined| SummaryReport = undefined;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -122,8 +117,6 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
           return;
         }
       );
-      this.reportGenerator = new SummaryReport(this.course, this.year.toString(), this.department,
-        this.defaulter);
     }
   }
 
@@ -156,7 +149,8 @@ export class AdminDashboardComponent implements OnInit, DoCheck {
           }
         }
         else {
-        this.reportGenerator?.download();  
+          const reportGenerator = new SummaryReport(this.course, this.year.toString(), this.department, this.defaulter);
+          reportGenerator.download();
       }
      }
 }
