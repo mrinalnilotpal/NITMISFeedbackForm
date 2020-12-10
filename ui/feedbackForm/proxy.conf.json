@@ -19,6 +19,11 @@
     "secure": false,
     "logLevel": "debug"
   },
+  "/api/getCoursesAndFaculty": {
+    "target": "http://localhost:8080/getCoursesAndFaculty.php",
+    "secure": false,
+    "logLevel": "debug"
+  },
   "/api/getCourses": {
     "target": "http://localhost:8080/getCourses.php",
     "secure": false,

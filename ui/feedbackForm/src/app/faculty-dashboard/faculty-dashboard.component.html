@@ -18,6 +18,6 @@
   <div class="container">
       <app-summary-view *ngIf="!isComments" [feedback] = "feedback" [courseType] = "courseType"></app-summary-view>
       <app-comments *ngIf="isComments" [comments]="comments"></app-comments>
-    </div>
+  </div>
 </div>
 <app-loading [loading]="loading"></app-loading>

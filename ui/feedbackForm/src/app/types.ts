@@ -28,3 +28,15 @@ export interface DefaulterData {
     "roll_no": string;
     "name": string;
 }
+
+export interface FacultyData {
+    "fac_id": string;
+    "fac_name": string;
+}
+export interface CoursesData {
+    "course_id": string,
+    "course_name": string,
+    "type": string,
+    "faculty": FacultyData[] 
+}
+
