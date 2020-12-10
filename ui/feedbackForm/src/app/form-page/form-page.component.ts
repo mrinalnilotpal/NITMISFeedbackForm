@@ -69,10 +69,16 @@ export class FormPageComponent implements OnInit, AfterContentChecked {
           this.loading = false;
         },
         (err) => {
+            console.log(err);
             this.router.navigateByUrl(this.errorUrl);
             return;
         });
 
+    }, 
+    err => {
+      console.log(err);
+      this.router.navigateByUrl(this.errorUrl);
+      return;
     });
   }
 
