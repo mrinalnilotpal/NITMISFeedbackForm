@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             if( count($feedback) > 0)
             {
                $flag = true;
-               for ($i = 0 ; $i < count($feedback); $i++) {
+               for ($i = 0 ; $i < count($feedback); $i++)
+	       {
                   $feedback_obj = $feedback[0];
                   if ( $feedback_obj && 
                         property_exists($feedback_obj, "course_id") && 
