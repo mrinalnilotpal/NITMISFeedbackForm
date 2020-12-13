@@ -3,7 +3,8 @@
 require "dbConnect.php";
 require "httpHelper.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
     $json = file_get_contents('php://input');
     $data = json_decode($json);
     if ($data && property_exists($data, "roll_no") && property_exists($data, "password")) {
@@ -12,9 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "SELECT * FROM student_credentials WHERE ROLL_NO='". $data->roll_no."'";
         $result = $conn->query($query);
 
-        if ($result->num_rows > 0) { 
+        if ($result->num_rows > 0)
+        { 
 
-            if ($result->num_rows === 1) {
+            if ($result->num_rows === 1)
+            {
                 $user = $result->fetch_assoc();
                 $valid_password = password_verify($data->password, $user['PASSWORD']);
                 if ($valid_password) {
