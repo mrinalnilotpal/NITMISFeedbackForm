@@ -3,7 +3,8 @@
 require "dbConnect.php";
 require "httpHelper.php";
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') 
+{
     $json = file_get_contents('php://input');
     $data = json_decode($json);
     if ($data && property_exists($data, "course_id") && property_exists($data, "fac_id") && property_exists($data, "course_type")) {
